@@ -21,7 +21,7 @@ public:
     */
     demo(demo && obj){
       buffer = obj.buffer;
-      obj.buffer = NULL;
+      obj.buffer = NULL; //移交所有指针
     }
 	~demo()
 	{

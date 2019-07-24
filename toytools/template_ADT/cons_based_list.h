@@ -29,6 +29,17 @@ IF_ELSE(IS_NOT_EMPTY(GET_FIR(__VA_ARGS__)))( \
 )( \
     list<__VA_ARGS__> \
 ) 
+template<int a, int...nums>
+struct __intlist__{
+    using value = cons<i32<a>, typename __intlist__<nums...>::value>;
+};
+template<int a>
+struct __intlist__<a>{
+    using value = cons<i32<a>, nil>;
+};
+template<int...nums>
+using intlist = typename __intlist__<nums...>::value;
+#define intlist(...) intlist<__VA_ARGS__>
 //-----------------------------------------------------------
 
 //---------------------functions for list--------------------

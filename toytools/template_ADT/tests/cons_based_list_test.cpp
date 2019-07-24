@@ -36,4 +36,7 @@ int main(){
     cout << "test_length2 for '(3,2,1): \t" << format_name(length2()) << endl;
     using length3 = length(test_list3);
     cout << "test_length3 for '(): \t\t" << format_name(length3()) << endl;
+
+    //Test intlist
+    cout << "intlist(1,2,3): " << format_name(intlist(1,2,3)()) << endl;
 }

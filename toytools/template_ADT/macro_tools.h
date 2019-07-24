@@ -1,6 +1,17 @@
+
 #ifndef MACRO_TOOLS
 #define MACRO_TOOLS
 
+//------------------------------------------------------------------
+/*
+    Author:
+    冯昱尧
+
+    Reference link:
+    https://zhuanlan.zhihu.com/p/27146532
+    https://zhuanlan.zhihu.com/p/27024686
+    
+ */
 #define PRIMITIVE_CAT(x, y) x ## y
 #define CAT(x, y) PRIMITIVE_CAT(x, y)
 #define GET_SEC(x, n, ...) n
@@ -14,9 +25,6 @@
 
 #define IS_EMPTY(x) CHECK(CAT(PRIMITIVE_CAT(IS_EMPTY_, x), 0))
 #define IS_EMPTY_0 PROBE()
-
-#define IS_NOT_EMPTY(x) CHECK(PRIMITIVE_CAT(IS_NOT_EMPTY_0, x))
-#define IS_NOT_EMPTY_0 PROBE()
 
 #define IS_PAREN(x) CHECK(IS_PAREN_PROBE x)
 #define IS_PAREN_PROBE(...) PROBE()
@@ -55,5 +63,9 @@
         -> True branch _IF_1_ELSE_ (False branch)
         -> True branch
         */
+//-----------------------------------------------------------------------------
+
+#define IS_NOT_EMPTY(x) CHECK(PRIMITIVE_CAT(IS_NOT_EMPTY_0, x))
+#define IS_NOT_EMPTY_0 PROBE()
 
 #endif

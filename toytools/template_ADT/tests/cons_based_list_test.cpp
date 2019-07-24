@@ -1,14 +1,16 @@
 #include <typeinfo>
 #include <iostream>
-#include "../list.h"
+#include <utility>
+#include "../cons_based_list.h"
 #include "./test_tools.h"
-using namespace std;
+using std::cout;
+using std::endl;
 
 int main(){
     //TEST list
     using test_list1 = list( i32(1) );
     cout << format_name(test_list1()) << endl;
-    using test_list2 = list( i32(3), i32(2), i32(1) );
+    using test_list2 = list( i32(3), i32(2), list(i32(999)) );
     cout << format_name(test_list2()) << endl;
     using test_list3 = list();
     cout << format_name(test_list3()) << endl;

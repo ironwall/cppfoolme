@@ -1,13 +1,7 @@
-#ifndef TLIST_H
-#define TLIST_H
+#ifndef USECONS
+#define USECONS
 #include "macro_tools.h"
-//---------------------Basic data types----------------------
-template<int N>
-struct i32{
-    enum{value = N};
-};
-#define i32(n) i32<n>
-//-----------------------------------------------------------
+#include "base_types.h"
 
 //---------------------cons and list-------------------------
 struct nil{};

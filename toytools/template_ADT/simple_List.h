@@ -1,10 +1,11 @@
 #ifndef SIMPLE_LIST_H
 #define SIMPLE_LIST_H
 #include "base_types.h"
-template<class...nums>
-struct List{};
-template<class List>
 
+template<class...items>
+struct List{};
+
+template<class List>
 struct make_Car{};
 template<class Head, class...Tail>
 struct make_Car<List<Head, Tail...>>{
@@ -22,17 +23,17 @@ struct make_Cdr<List<Head, Tail...>>{
 template<class List>
 using Cdr = typename make_Cdr<List>::value;
 
-template<class List1, class List2>
-struct make_append2{};
-template<class...T1, class...T2>
-struct make_append2<List<T1...>, List<T2...>>{
-    using value = List<T1..., T2...>;
-};
-template<class List1, class List2>
-using append2 = typename make_append2<List1, List2>::value;
-
 template<class List, class...Args>
 struct make_append{
+    template<class List1, class List2>
+    struct make_append2{};
+    template<class...T1, class...T2>
+    struct make_append2<::List<T1...>, ::List<T2...>>{
+        using value = ::List<T1..., T2...>;
+    };
+    template<class List1, class List2>
+    using append2 = typename make_append2<List1, List2>::value;
+
     using value = append2<List, typename make_append<Args...>::value>;
 };
 template<class List>

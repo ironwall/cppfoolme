@@ -38,6 +38,7 @@ IF_ELSE(IS_NOT_EMPTY(GET_FIR(__VA_ARGS__)))( \
 //-----------------------------------------------------------
 
 //---------------------functions for list--------------------
+//----------car------------
 template<class LIST>
 struct __car__{};
 template<class HEAD, class LIST>
@@ -47,7 +48,9 @@ struct __car__<cons<HEAD, LIST>>{
 template<class LIST>
 using car = typename __car__<LIST>::value;
 #define car(x) car<x>
+//----------car-------------
 
+//----------cdr-------------
 template<class LIST>
 struct __cdr__{};
 template<class HEAD, class LIST>
@@ -57,6 +60,29 @@ struct __cdr__<cons<HEAD, LIST>>{
 template<class LIST>
 using cdr = typename __cdr__<LIST>::value;
 #define cdr(x) cdr<x>
+//----------cdr-------------
+
+//----------length----------
+template<class LIST>
+struct __length__{};
+template<class HEAD, class LIST>
+struct __length__<cons<HEAD, LIST>>{
+    using value = i32<1 + __length__<LIST>::value::value >;
+};
+template<class HEAD>
+struct __length__<cons<HEAD, nil>>{
+    using value = i32<1>;
+};
+template<>
+struct __length__<nil>{
+    using value = i32<0>;
+};
+template<class LIST>
+using length = typename __length__<LIST>::value;
+#define length(x) length<x>
+//----------length----------
+
+
 //-----------------------------------------------------------
 
 #endif

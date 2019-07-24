@@ -26,4 +26,12 @@ int main(){
     cout << "test_cdr1: " << format_name(test_cdr1()) << endl;
     using test_cdr2 = cdr(test_list2);
     cout << "test_cdr2: " << format_name(test_cdr2()) << endl;
+
+    //TEST length
+    using length1 = length(test_list1);
+    cout << "test_length1 for '(1): \t\t" << format_name(length1()) << endl;
+    using length2 = length(test_list2);
+    cout << "test_length2 for '(3,2,1): \t" << format_name(length2()) << endl;
+    using length3 = length(test_list3);
+    cout << "test_length3 for '(): \t\t" << format_name(length3()) << endl;
 }

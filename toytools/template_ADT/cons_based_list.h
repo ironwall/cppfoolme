@@ -24,18 +24,18 @@ template<class ...ITEMS>
 using list = typename __list__<ITEMS...>::value;
 
 #define list(...) \
-IF_ELSE(IS_NOT_EMPTY(GET_FIR(__VA_ARGS__)))( \
+IF_ELSE(IS_EMPTY2(GET_FIR(__VA_ARGS__)))( \
     nil \
 )( \
     list<__VA_ARGS__> \
 ) 
 template<int a, int...nums>
 struct __intlist__{
-    using value = cons<i32<a>, typename __intlist__<nums...>::value>;
+    using value = cons<Int<a>, typename __intlist__<nums...>::value>;
 };
 template<int a>
 struct __intlist__<a>{
-    using value = cons<i32<a>, nil>;
+    using value = cons<Int<a>, nil>;
 };
 template<int...nums>
 using intlist = typename __intlist__<nums...>::value;
@@ -72,15 +72,15 @@ template<class LIST>
 struct __length__{};
 template<class HEAD, class LIST>
 struct __length__<cons<HEAD, LIST>>{
-    using value = i32<1 + __length__<LIST>::value::value >;
+    using value = Int<1 + __length__<LIST>::value::value >;
 };
 template<class HEAD>
 struct __length__<cons<HEAD, nil>>{
-    using value = i32<1>;
+    using value = Int<1>;
 };
 template<>
 struct __length__<nil>{
-    using value = i32<0>;
+    using value = Int<0>;
 };
 template<class LIST>
 using length = typename __length__<LIST>::value;

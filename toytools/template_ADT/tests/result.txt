@@ -1,61 +1,7 @@
-# 1 "macrotest.cpp"
+# 1 "macro_test.cpp"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "macrotest.cpp"
+# 1 "macro_test.cpp"
 # 1 "../macro_tools.h" 1
-# 2 "macrotest.cpp" 2
-# 1 "../list.h" 1
-
-
-# 1 "../macro_tools.h" 1
-# 4 "../list.h" 2
-template<int N>
-struct i32{
-    enum{value = N};
-};
-
-
-struct nil{};
-
-template<class DATA, class LIST>
-struct cons{};
-template<class DATA>
-struct cons<DATA, nil>{};
-
-
-template<class HEAD, class ...TAIL>
-struct __list__{
-    using value = cons< HEAD, typename __list__<TAIL...>::value >;
-};
-template<class HEAD>
-struct __list__<HEAD>{
-    using value = cons<HEAD, nil>;
-};
-template<class ...ITEMS>
-using list = typename __list__<ITEMS...>::value;
-# 46 "../list.h"
-template<class LIST>
-struct __car__{};
-template<class HEAD, class LIST>
-struct __car__<cons<HEAD, LIST>>{
-    using value = HEAD;
-};
-template<class LIST>
-using car = typename __car__<LIST>::value;
-
-template<class LIST>
-struct __cdr__{};
-template<class HEAD, class LIST>
-struct __cdr__<cons<HEAD, LIST>>{
-    using value = LIST;
-};
-template<class LIST>
-using cdr = typename __cdr__<LIST>::value;
-# 3 "macrotest.cpp" 2
-
-
-
-
-nil
-
-1
+# 2 "macro_test.cpp" 2
+IS_NOT_EMPTY()

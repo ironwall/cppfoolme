@@ -1,24 +1,18 @@
-#include <typeinfo>
-#include <iostream>
-#include <utility>
-#include <cxxabi.h>
 #include "../simple_List.h"
+#include "../base_types.h"
+#include "../libs.h"
 #include "./test_tools.h"
-using std::cout;
-using std::endl;
-
-using namespace std;
-
 
 int main(){
-    cout << format_name(Car<List<Int<3>>>()) << endl;
-    cout << format_name(
-        append< List<Int<1>, Int<77>>, List<Int<1>,Int<2>>, List<Int<999>>>
-        ()) << endl;
-    cout << format_name(
-        IntList<1, 2, 3, 4>
-    ()) << endl;
-    // make_list<1, 2, 3, 4> => List<Int<1>, Int<2>, Int<3>, Int<4>>;
-    // cout << format(make_list<1,2,3,4>()) << endl;
+    display(larger<Int(5), Int(1)>::value);
+    using a = filter(larger<Int(9)>, IntList(9,0,5,8,9,4,3,1,2,6,7));
+    using b = filter(smaller<Int(9)>, IntList(9,0,5,8,9,4,3,1,2,6,7));
+    using c = filter(eq<Int(9)>, IntList(9,0,5,8,9,4,3,1,2,6,7,9));
+    display(a);
+     display(b);
+    cout << "eq:  "; display(c);
+    display(concat(b,c,a));
+    using r = qksort<IntList(9,0,5,8,9,4,3,1,2,6,7,9)>::value;
+    display(r);
+    return 0;
 }
-

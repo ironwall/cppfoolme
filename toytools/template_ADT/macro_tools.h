@@ -65,7 +65,7 @@
         */
 //-----------------------------------------------------------------------------
 
-#define IS_NOT_EMPTY(x) CHECK(PRIMITIVE_CAT(IS_NOT_EMPTY_0, x))
-#define IS_NOT_EMPTY_0 PROBE()
+#define I$_EMPTY(x) CHECK(PRIMITIVE_CAT(I$_EMPTY_0, x))
+#define I$_EMPTY_0 PROBE()
 
 #endif

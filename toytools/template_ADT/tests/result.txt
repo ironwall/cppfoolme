@@ -1,7 +1,0 @@
-# 1 "macro_test.cpp"
-# 1 "<built-in>"
-# 1 "<command-line>"
-# 1 "macro_test.cpp"
-# 1 "../macro_tools.h" 1
-# 2 "macro_test.cpp" 2
-IS_NOT_EMPTY()
